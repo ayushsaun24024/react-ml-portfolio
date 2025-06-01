@@ -79,7 +79,7 @@ const Home = () => {
               </a>
             </li>
             <li className="nav-item">
-              <a href="#models" className="nav-link" onClick={(e) => handleSmoothScroll(e, '#models')}>
+              <a href="/models" className="nav-link">
                 Models
               </a>
             </li>

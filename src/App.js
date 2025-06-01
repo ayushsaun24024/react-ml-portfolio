@@ -1,15 +1,19 @@
 import React from 'react';
 import Home from './pages/Home/Home';
 import About from './pages/About/About';
+import Models from './pages/Models/Models';
+import Contact from './pages/Contact/Contact';
 import './App.css';
 
 function App() {
-  // Simple routing logic (you can later use React Router)
   const currentPath = window.location.pathname;
 
   return (
     <div className="App">
-      {currentPath === '/about' ? <About /> : <Home />}
+      {currentPath === '/contact' ? <Contact /> :
+       currentPath === '/models' ? <Models /> : 
+       currentPath === '/about' ? <About /> : 
+       <Home />}
     </div>
   );
 }

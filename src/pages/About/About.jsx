@@ -59,7 +59,7 @@ const About = () => {
       {/* Navigation */}
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="nav-container">
-          <div className="logo-text">Your Portfolio</div>
+          <div className="logo-text">Signal & Syntax</div>
           <ul className="nav-menu">
             <li className="nav-item">
               <a href="/" className="nav-link">Home</a>

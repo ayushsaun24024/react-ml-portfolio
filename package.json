@@ -4,7 +4,9 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server .",
-    "build": "webpack ."
+    "build": "webpack .",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -16,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/ayushsaun24024/react-ml-portfolio/issues"
   },
-  "homepage": "https://github.com/ayushsaun24024/react-ml-portfolio#readme",
+  "homepage": "https://ayushsaun24024.github.io/react-ml-portfolio",
   "description": "",
   "devDependencies": {
     "@babel/cli": "^7.27.2",
@@ -32,6 +34,7 @@
     "webpack-dev-server": "^5.2.1"
   },
   "dependencies": {
+    "gh-pages": "^6.3.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   }

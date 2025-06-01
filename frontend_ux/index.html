@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML/DL Portfolio | Your Name</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">Portfolio</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="models.html" class="nav-link">Models</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Machine Learning & Deep Learning Models</h1>
+                <p class="hero-subtitle">Explore cutting-edge AI solutions for object tracking, audio processing, and spoof detection</p>
+                <a href="#models" class="cta-button">
+                    Explore Models
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-card card-1"></div>
+                <div class="floating-card card-2"></div>
+                <div class="floating-card card-3"></div>
+            </div>
+        </section>
+
+        <section id="models" class="models-section">
+            <div class="container">
+                <h2 class="section-title">Featured Models</h2>
+                <p class="section-subtitle">Select a model to explore its capabilities and implementation details</p>
+                
+                <div class="models-grid">
+                    <div class="model-card" onclick="window.location.href='model1.html'">
+                        <div class="card-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>Object Tracking</h3>
+                        <p>ML-based single object tracking model with real-time performance optimization</p>
+                        <div class="card-footer">
+                            <span class="tech-tag">Machine Learning</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+
+                    <div class="model-card" onclick="window.location.href='model2.html'">
+                        <div class="card-icon">
+                            <i class="fas fa-microphone"></i>
+                        </div>
+                        <h3>Vocoder</h3>
+                        <p>Advanced ML-based vocoder for high-quality speech synthesis and audio generation</p>
+                        <div class="card-footer">
+                            <span class="tech-tag">Machine Learning</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+
+                    <div class="model-card" onclick="window.location.href='model3.html'">
+                        <div class="card-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Spoof Detection</h3>
+                        <p>Deep learning model to detect spoofed vs bonafide audio with high accuracy</p>
+                        <div class="card-footer">
+                            <span class="tech-tag">Deep Learning</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+
+                    <div class="model-card" onclick="window.location.href='model4.html'">
+                        <div class="card-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3>Target Classification</h3>
+                        <p>DL-based model for target vs non-target audio classification system</p>
+                        <div class="card-footer">
+                            <span class="tech-tag">Deep Learning</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

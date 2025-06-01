@@ -1,0 +1,155 @@
+import React, { useState, useEffect } from 'react';
+import './Home.css';
+
+const Home = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Handle mobile menu toggle
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  // Handle navbar scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 50;
+      setScrolled(isScrolled);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Handle smooth scrolling
+  const handleSmoothScroll = (e, targetId) => {
+    e.preventDefault();
+    const target = document.querySelector(targetId);
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+    setIsMenuOpen(false); // Close mobile menu after clicking
+  };
+
+  // Featured models data
+  const featuredModels = [
+    {
+      id: 1,
+      title: "Object Tracking",
+      description: "ML-based single object tracking model with real-time performance optimization",
+      icon: "fas fa-crosshairs",
+      techTag: "Computer Vision"
+    },
+    {
+      id: 2,
+      title: "Vocoder",
+      description: "Advanced ML-based vocoder for high-quality speech synthesis and audio generation",
+      icon: "fas fa-microphone",
+      techTag: "Audio ML"
+    },
+    {
+      id: 3,
+      title: "Spoof Detection",
+      description: "Deep learning model to detect spoofed vs bonafide audio with high accuracy",
+      icon: "fas fa-shield-alt",
+      techTag: "Security AI"
+    },
+    {
+      id: 4,
+      title: "Target Classification",
+      description: "DL-based model for target vs non-target audio classification system",
+      icon: "fas fa-bullseye",
+      techTag: "Classification"
+    }
+  ];
+
+  return (
+    <div className="home">
+      {/* Navigation */}
+      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+        <div className="nav-container">
+          <div className="logo-text">Signal & Syntax</div>
+          <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
+            <li className="nav-item">
+              <a href="#home" className="nav-link active" onClick={(e) => handleSmoothScroll(e, '#home')}>
+                Home
+              </a>
+            </li>
+            <li className="nav-item">
+              <a href="#models" className="nav-link" onClick={(e) => handleSmoothScroll(e, '#models')}>
+                Models
+              </a>
+            </li>
+            <li className="nav-item">
+              <a href="/about" className="nav-link">
+                About
+              </a>
+            </li>
+            <li className="nav-item">
+              <a href="/contact" className="nav-link">
+                Contact
+              </a>
+            </li>
+          </ul>
+          <div className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
+            <div className="bar"></div>
+            <div className="bar"></div>
+            <div className="bar"></div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section id="home" className="hero">
+        <div className="hero-content">
+          <h1 className="hero-title">Machine Learning & Deep Learning Models</h1>
+          <p className="hero-subtitle">
+            Explore cutting-edge AI solutions for object tracking, audio processing, and spoof detection
+          </p>
+          <a href="#models" className="cta-button" onClick={(e) => handleSmoothScroll(e, '#models')}>
+            Explore Models
+            <i className="fas fa-arrow-right"></i>
+          </a>
+        </div>
+        
+        {/* Floating Cards Animation */}
+        <div className="hero-visual">
+          <div className="floating-card card-1"></div>
+          <div className="floating-card card-2"></div>
+          <div className="floating-card card-3"></div>
+        </div>
+      </section>
+
+      {/* Featured Models Section */}
+      <section id="models" className="models-section">
+        <div className="container">
+          <h2 className="section-title">Featured Models</h2>
+          <p className="section-subtitle">
+            Select a model to explore its capabilities and implementation details
+          </p>
+          
+          <div className="models-grid">
+            {featuredModels.map((model) => (
+              <div key={model.id} className="model-card" data-aos="fade-up">
+                <div className="card-icon">
+                  <i className={model.icon}></i>
+                </div>
+                <h3>{model.title}</h3>
+                <p>{model.description}</p>
+                <div className="card-footer">
+                  <span className="tech-tag">{model.techTag}</span>
+                  <i className="fas fa-arrow-right"></i>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Home;

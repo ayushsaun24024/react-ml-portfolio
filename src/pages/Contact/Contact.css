@@ -237,6 +237,7 @@
 .social-links-contact {
   display: flex;
   gap: 1rem;
+  margin-bottom: 20px;
 }
 
 .social-link {
@@ -476,4 +477,13 @@
     flex-direction: column;
     gap: 1.5rem;
   }
+}
+
+.contact-cta .stat-number {
+  color: #ffffff;
+}
+
+.contact-cta .stat-label {
+  color: #FFD700;
+  opacity: 1;
 }

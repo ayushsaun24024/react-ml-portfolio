@@ -34,6 +34,7 @@
     "webpack-dev-server": "^5.2.1"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "gh-pages": "^6.3.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

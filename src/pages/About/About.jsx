@@ -29,19 +29,29 @@ const About = () => {
   // Timeline data
   const timeline = [
     {
-      year: '2024',
-      title: 'Senior ML Engineer',
-      description: 'Developed advanced audio processing models and spoof detection systems'
+      year: '2025',
+      title: 'M.Tech Thesis: Speech & Audio Research',
+      description: 'Started my master’s thesis at IIIT Delhi, delving into advanced audio and speech processing methods—particularly deepfake detection—to strengthen the robustness of automatic speaker-verification systems.'
     },
     {
-      year: '2023',
-      title: 'ML Research Intern',
-      description: 'Worked on object tracking algorithms and computer vision projects'
+      year: '2024',
+      title: 'Master’s in Computer Science, IIIT Delhi',
+      description: 'Left Samsung R&D to pursue a full-time M.Tech program in Computer Science, concentrating on artificial intelligence and machine learning.'
     },
     {
       year: '2022',
-      title: "Started Master's Program",
-      description: 'Specialized in Machine Learning and Artificial Intelligence'
+      title: 'B.Tech Completion & Samsung R&D',
+      description: 'Graduated with a 7.84 CGPA in Electrical Engineering and joined Samsung R&D as a full-stack developer.'
+    },
+    {
+      year: '2018',
+      title: '85% in CBSE Class 12 & DTU Enrollment',
+      description: 'Scored 85% in the CBSE 12th exams before starting my B.Tech in Electrical Engineering at DTU.'
+    },
+    {
+      year: '2016',
+      title: '9.6 CGPA in CBSE Class 10',
+      description: 'Achieved a 9.6 CGPA in Class 10 CBSE, laying a strong academic foundation.'
     }
   ];
 
@@ -73,17 +83,42 @@ const About = () => {
               <h1>Your Name</h1>
               <p className="role">ML/DL Engineer & Researcher</p>
               <div className="social-links">
-                <a href="#" className="social-link" aria-label="LinkedIn">
+                <a
+                  href="https://www.linkedin.com/in/ayush-saun-381371180/"
+                  className="social-link"
+                  aria-label="LinkedIn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <i className="fab fa-linkedin-in"></i>
                 </a>
-                <a href="#" className="social-link" aria-label="GitHub">
+
+                <a
+                  href="https://github.com/ayushsaun24024"
+                  className="social-link"
+                  aria-label="GitHub"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <i className="fab fa-github"></i>
                 </a>
-                <a href="#" className="social-link" aria-label="Twitter">
-                  <i className="fab fa-twitter"></i>
-                </a>
-                <a href="#" className="social-link" aria-label="Email">
+
+                <a
+                  href="mailto:ayushsaun@gmail.com"
+                  className="social-link"
+                  aria-label="Email"
+                >
                   <i className="fas fa-envelope"></i>
+                </a>
+
+                <a
+                  href="https://wa.me/9667629472"
+                  className="social-link"
+                  aria-label="WhatsApp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="fab fa-whatsapp"></i>
                 </a>
               </div>
             </div>

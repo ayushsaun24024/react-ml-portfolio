@@ -720,6 +720,7 @@ body {
 .social-links-contact {
     display: flex;
     gap: 1rem;
+    margin-bottom: 20px;
 }
 
 .contact-form {

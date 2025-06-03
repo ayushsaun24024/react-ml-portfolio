@@ -1,9 +1,15 @@
-import './Contact.css';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import emailjs from '@emailjs/browser';
 import Navbar from '../../components/Navbar/Navbar';
+import './Contact.css';
+
+const SERVICE_ID = 'service_hslildh';
+const TEMPLATE_ID = 'template_9gozb49';
+const PUBLIC_KEY  = 'ckXbYFvsg8JC0S4tJ';
 
 const Contact = () => {
+  const formRef = useRef();
   const [scrolled, setScrolled] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -11,64 +17,34 @@ const Contact = () => {
     subject: '',
     message: ''
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState({});
+  const [status, setStatus] = useState({ sending: false, success: null });
 
-  // Handle navbar scroll effect
+  // Navbar scroll effect
   useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 50;
-      setScrolled(isScrolled);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Handle form input changes
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  // Handle form submission
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      alert('Message sent successfully! I\'ll get back to you soon.');
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      });
-      setIsSubmitting(false);
-    }, 1500);
-  };
-
-  // Contact information data
+  // Contact information cards
   const contactInfo = [
     {
       icon: "fas fa-envelope",
       title: "Email",
-      content: "your.email@example.com",
+      content: "ayushsaun@gmail.com",
       description: "Send me an email anytime!"
     },
     {
       icon: "fas fa-phone",
       title: "Phone",
-      content: "+1 (555) 123-4567",
-      description: "Available Mon-Fri, 9AM-6PM"
+      content: "+91 96676 29472",
+      description: "Available Mon–Fri, 9AM–6PM"
     },
     {
       icon: "fas fa-map-marker-alt",
       title: "Location",
-      content: "Your City, Country",
+      content: "Delhi, India",
       description: "Open to remote opportunities"
     },
     {
@@ -79,41 +55,77 @@ const Contact = () => {
     }
   ];
 
+  // Handle input changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(fd => ({ ...fd, [name]: value }));
+  };
+
+  // Validate fields
+  const validate = () => {
+    const errs = {};
+    if (!formData.name.trim() || formData.name.length < 2) {
+      errs.name = 'Enter your full name (min 2 characters).';
+    }
+    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRe.test(formData.email)) {
+      errs.email = 'Enter a valid email address.';
+    }
+    if (!formData.subject.trim() || formData.subject.length < 3) {
+      errs.subject = 'Subject must be at least 3 characters.';
+    }
+    if (!formData.message.trim() || formData.message.length < 10) {
+      errs.message = 'Message must be at least 10 characters.';
+    }
+    setErrors(errs);
+    return Object.keys(errs).length === 0;
+  };
+
+  // Submit form via EmailJS
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!validate()) return;
+
+    setStatus({ sending: true, success: null });
+    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
+      .then(() => {
+        setStatus({ sending: false, success: true });
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setErrors({});
+      })
+      .catch(() => {
+        setStatus({ sending: false, success: false });
+      });
+  };
+
   return (
     <div className="contact">
-      {/* Navigation */}
       <Navbar />
 
-      {/* Contact Hero Section */}
+      {/* Hero Section */}
       <section className="contact-hero">
         <div className="container">
           <h1 className="page-title">Get In Touch</h1>
           <p className="page-subtitle">
-            Let's discuss opportunities and collaborations
+            Let’s discuss opportunities and collaborations
           </p>
-          <div className="hero-decoration">
-            <div className="decoration-item"></div>
-            <div className="decoration-item"></div>
-            <div className="decoration-item"></div>
-          </div>
         </div>
       </section>
 
-      {/* Contact Content */}
+      {/* Content Section */}
       <section className="contact-content">
         <div className="container">
           <div className="contact-grid">
-            
-            {/* Contact Information */}
+
+            {/* Contact Info Cards */}
             <div className="contact-info">
               <h2>Contact Information</h2>
               <p className="info-subtitle">
-                Ready to bring your ML/DL projects to life? Let's connect and explore how we can work together.
+                Ready to bring your ML/DL projects to life? Let’s connect and explore how we can work together.
               </p>
-              
               <div className="contact-items">
-                {contactInfo.map((item, index) => (
-                  <div key={index} className="contact-item" data-aos="fade-right" data-aos-delay={index * 100}>
+                {contactInfo.map((item, i) => (
+                  <div key={i} className="contact-item" data-aos="fade-right" data-aos-delay={i * 100}>
                     <div className="contact-icon">
                       <i className={item.icon}></i>
                     </div>
@@ -130,38 +142,55 @@ const Contact = () => {
               <div className="social-section">
                 <h3>Connect with me</h3>
                 <div className="social-links-contact">
-                  <a href="#" className="social-link" aria-label="LinkedIn">
+                  <a
+                    href="https://www.linkedin.com/in/ayush-saun-381371180/"
+                    className="social-link"
+                    aria-label="LinkedIn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <i className="fab fa-linkedin-in"></i>
                   </a>
-                  <a href="#" className="social-link" aria-label="GitHub">
+                  <a
+                    href="https://github.com/ayushsaun24024"
+                    className="social-link"
+                    aria-label="GitHub"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <i className="fab fa-github"></i>
                   </a>
-                  <a href="#" className="social-link" aria-label="Twitter">
-                    <i className="fab fa-twitter"></i>
-                  </a>
-                  <a href="#" className="social-link" aria-label="Email">
+                  <a
+                    href="mailto:ayushsaun@gmail.com"
+                    className="social-link"
+                    aria-label="Email"
+                  >
                     <i className="fas fa-envelope"></i>
                   </a>
-                  <a href="#" className="social-link" aria-label="Discord">
-                    <i className="fab fa-discord"></i>
+                  <a
+                    href="https://wa.me/9667629472"
+                    className="social-link"
+                    aria-label="WhatsApp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i className="fab fa-whatsapp"></i>
                   </a>
                 </div>
-              </div>
-
-              {/* Quick Response Info */}
-              <div className="response-info">
-                <div className="response-card">
-                  <i className="fas fa-clock"></i>
-                  <div>
-                    <h4>Quick Response</h4>
-                    <p>Usually respond within 24 hours</p>
+                <div className="response-info">
+                  <div className="response-card">
+                    <i className="fas fa-clock"></i>
+                    <div>
+                      <h4>Quick Response</h4>
+                      <p>Usually respond within 24 hours</p>
+                    </div>
                   </div>
-                </div>
-                <div className="response-card">
-                  <i className="fas fa-globe"></i>
-                  <div>
-                    <h4>Remote Ready</h4>
-                    <p>Available for global collaborations</p>
+                  <div className="response-card">
+                    <i className="fas fa-globe"></i>
+                    <div>
+                      <h4>Remote Ready</h4>
+                      <p>Available for global collaborations</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -169,37 +198,36 @@ const Contact = () => {
 
             {/* Contact Form */}
             <div className="contact-form-section">
-              <form className="contact-form" onSubmit={handleSubmit}>
+              <form ref={formRef} className="contact-form" onSubmit={handleSubmit}>
                 <h2>Send a Message</h2>
-                <p>Have a project in mind? Let's discuss how we can work together.</p>
-                
-                <div className="form-row">
-                  <div className="form-group">
-                    <label htmlFor="name">Full Name</label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      placeholder="Your full name"
-                      required
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="email">Email Address</label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      placeholder="your.email@example.com"
-                      required
-                    />
-                  </div>
+                <p>Have a project in mind? Let’s discuss how we can work together.</p>
+
+                <div className="form-group">
+                  <label htmlFor="name">Full Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Your full name"
+                  />
+                  {errors.name && <span className="error">{errors.name}</span>}
                 </div>
-                
+
+                <div className="form-group">
+                  <label htmlFor="email">Email Address</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="your.email@example.com"
+                  />
+                  {errors.email && <span className="error">{errors.email}</span>}
+                </div>
+
                 <div className="form-group">
                   <label htmlFor="subject">Subject</label>
                   <input
@@ -207,38 +235,35 @@ const Contact = () => {
                     id="subject"
                     name="subject"
                     value={formData.subject}
-                    onChange={handleInputChange}
+                    onChange={handleChange}
                     placeholder="What's this about?"
-                    required
                   />
+                  {errors.subject && <span className="error">{errors.subject}</span>}
                 </div>
-                
+
                 <div className="form-group">
                   <label htmlFor="message">Message</label>
                   <textarea
                     id="message"
                     name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    placeholder="Tell me about your project or collaboration idea..."
                     rows="6"
-                    required
-                  ></textarea>
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Tell me about your project or collaboration idea..."
+                  />
+                  {errors.message && <span className="error">{errors.message}</span>}
                 </div>
-                
-                <button type="submit" className="submit-btn" disabled={isSubmitting}>
-                  {isSubmitting ? (
-                    <>
-                      <i className="fas fa-spinner fa-spin"></i>
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <i className="fas fa-paper-plane"></i>
-                      Send Message
-                    </>
-                  )}
+
+                <button type="submit" className="submit-btn" disabled={status.sending}>
+                  {status.sending ? 'Sending...' : 'Send Message'}
                 </button>
+
+                {status.success === true && (
+                  <p className="success-msg">Message sent successfully!</p>
+                )}
+                {status.success === false && (
+                  <p className="error-msg">Failed to send. Please try again.</p>
+                )}
               </form>
             </div>
           </div>

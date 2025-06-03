@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import './Contact.css';
+import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import Navbar from '../../components/Navbar/Navbar';
 
 const Contact = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -81,25 +82,7 @@ const Contact = () => {
   return (
     <div className="contact">
       {/* Navigation */}
-      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-        <div className="nav-container">
-          <div className="logo-text">Signal & Syntax</div>
-          <ul className="nav-menu">
-            <li className="nav-item">
-              <Link to="/" className="nav-link">Home</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/models" className="nav-link">Models</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/about" className="nav-link">About</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/contact" className="nav-link active">Contact</Link>
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* Contact Hero Section */}
       <section className="contact-hero">

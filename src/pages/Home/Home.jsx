@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import './Home.css';
+import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import Navbar from '../../components/Navbar/Navbar';
 
 const Home = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -69,38 +70,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-        <div className="nav-container">
-          <div className="logo-text">Signal & Syntax</div>
-          <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
-            <li className="nav-item">
-              <a href="#home" className="nav-link active" onClick={(e) => handleSmoothScroll(e, '#home')}>
-                Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <Link to="/models" className="nav-link">
-                Models
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/about" className="nav-link">
-                About
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/contact" className="nav-link">
-                Contact
-              </Link>
-            </li>
-          </ul>
-          <div className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
-            <div className="bar"></div>
-            <div className="bar"></div>
-            <div className="bar"></div>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* Hero Section */}
       <section id="home" className="hero">

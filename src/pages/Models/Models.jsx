@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import './Models.css';
+import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import Navbar from '../../components/Navbar/Navbar';
 
 const Models = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -104,25 +105,7 @@ const Models = () => {
   return (
     <div className="models">
       {/* Navigation */}
-      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-        <div className="nav-container">
-          <div className="logo-text">Signal & Syntax</div>
-            <ul className="nav-menu">
-              <li className="nav-item">
-                <Link to="/" className="nav-link">Home</Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/models" className="nav-link active">Models</Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/about" className="nav-link">About</Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/contact" className="nav-link">Contact</Link>
-              </li>
-            </ul>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* Models Hero Section */}
       <section className="models-hero">

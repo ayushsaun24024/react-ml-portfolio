@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './About.css';
 
 const About = () => {
@@ -60,20 +61,20 @@ const About = () => {
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="nav-container">
           <div className="logo-text">Signal & Syntax</div>
-          <ul className="nav-menu">
-            <li className="nav-item">
-              <a href="/" className="nav-link">Home</a>
-            </li>
-            <li className="nav-item">
-              <a href="/models" className="nav-link">Models</a>
-            </li>
-            <li className="nav-item">
-              <a href="/about" className="nav-link active">About</a>
-            </li>
-            <li className="nav-item">
-              <a href="/contact" className="nav-link">Contact</a>
-            </li>
-          </ul>
+            <ul className="nav-menu">
+              <li className="nav-item">
+                <Link to="/" className="nav-link">Home</Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/models" className="nav-link">Models</Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/about" className="nav-link active">About</Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/contact" className="nav-link">Contact</Link>
+              </li>
+            </ul>
         </div>
       </nav>
 
@@ -219,10 +220,10 @@ const About = () => {
           <div className="cta-content">
             <h2>Let's Build Something Amazing Together</h2>
             <p>Ready to discuss your next ML project or collaboration opportunity?</p>
-            <a href="/contact" className="cta-button">
-              Get In Touch
-              <i className="fas fa-arrow-right"></i>
-            </a>
+              <Link to="/contact" className="cta-button">
+                Get In Touch
+                <i className="fas fa-arrow-right"></i>
+              </Link>
           </div>
         </div>
       </section>

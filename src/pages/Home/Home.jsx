@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './Home.css';
 
 const Home = () => {
@@ -68,7 +69,6 @@ const Home = () => {
 
   return (
     <div className="home">
-      {/* Navigation */}
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="nav-container">
           <div className="logo-text">Signal & Syntax</div>
@@ -79,19 +79,19 @@ const Home = () => {
               </a>
             </li>
             <li className="nav-item">
-              <a href="/models" className="nav-link">
+              <Link to="/models" className="nav-link">
                 Models
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="/about" className="nav-link">
+              <Link to="/about" className="nav-link">
                 About
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="/contact" className="nav-link">
+              <Link to="/contact" className="nav-link">
                 Contact
-              </a>
+              </Link>
             </li>
           </ul>
           <div className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>

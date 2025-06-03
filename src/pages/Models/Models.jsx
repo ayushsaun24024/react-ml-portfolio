@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './Models.css';
 
 const Models = () => {
@@ -106,20 +107,20 @@ const Models = () => {
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="nav-container">
           <div className="logo-text">Signal & Syntax</div>
-          <ul className="nav-menu">
-            <li className="nav-item">
-              <a href="/" className="nav-link">Home</a>
-            </li>
-            <li className="nav-item">
-              <a href="/models" className="nav-link active">Models</a>
-            </li>
-            <li className="nav-item">
-              <a href="/about" className="nav-link">About</a>
-            </li>
-            <li className="nav-item">
-              <a href="/contact" className="nav-link">Contact</a>
-            </li>
-          </ul>
+            <ul className="nav-menu">
+              <li className="nav-item">
+                <Link to="/" className="nav-link">Home</Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/models" className="nav-link active">Models</Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/about" className="nav-link">About</Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/contact" className="nav-link">Contact</Link>
+              </li>
+            </ul>
         </div>
       </nav>
 
@@ -251,10 +252,10 @@ const Models = () => {
           <div className="cta-content">
             <h2>Interested in These Models?</h2>
             <p>Let's discuss how these solutions can be adapted for your specific use case</p>
-            <a href="/contact" className="cta-button">
-              Get In Touch
-              <i className="fas fa-arrow-right"></i>
-            </a>
+              <Link to="/contact" className="cta-button">
+                Get In Touch
+                <i className="fas fa-arrow-right"></i>
+              </Link>
           </div>
         </div>
       </section>

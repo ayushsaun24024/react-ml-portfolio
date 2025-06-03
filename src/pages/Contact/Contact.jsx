@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './Contact.css';
 
 const Contact = () => {
@@ -85,16 +86,16 @@ const Contact = () => {
           <div className="logo-text">Signal & Syntax</div>
           <ul className="nav-menu">
             <li className="nav-item">
-              <a href="/" className="nav-link">Home</a>
+              <Link to="/" className="nav-link">Home</Link>
             </li>
             <li className="nav-item">
-              <a href="/models" className="nav-link">Models</a>
+              <Link to="/models" className="nav-link">Models</Link>
             </li>
             <li className="nav-item">
-              <a href="/about" className="nav-link">About</a>
+              <Link to="/about" className="nav-link">About</Link>
             </li>
             <li className="nav-item">
-              <a href="/contact" className="nav-link active">Contact</a>
+              <Link to="/contact" className="nav-link active">Contact</Link>
             </li>
           </ul>
         </div>

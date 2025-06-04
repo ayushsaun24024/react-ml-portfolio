@@ -20,11 +20,23 @@ const About = () => {
   }, []);
 
   // Skills data
-  const skills = [
-    'Python', 'TensorFlow', 'PyTorch', 'OpenCV', 'Scikit-learn', 
-    'Deep Learning', 'Machine Learning', 'Computer Vision', 
-    'Audio Processing', 'React', 'JavaScript', 'Docker'
-  ];
+  const skillsCategories = {
+    "Programming Languages": [
+      "Python", "C++", "JavaScript", "SQL", "TypeScript", "Java"
+    ],
+    "Frameworks & Libraries": [
+      "PyTorch", "TensorFlow", "Speechbrain", "scikit-learn",
+      "Transformers", "React", "Angular", "JUnit"
+    ],
+    "Tools & Technologies": [
+      "Git", "Linux", "AWS (Beginner)", "MATLAB", "LaTeX", "visual studio code", "vscode", "Intellij", "Jenkins"
+    ],
+    "Technical Areas": [
+      "Audio Processing", "Speech Recognition",
+      "Speaker Verification", "Computer Vision",
+      "Machine Learning"
+    ]
+  };
 
   // Timeline data
   const timeline = [
@@ -77,11 +89,11 @@ const About = () => {
         <div className="container">
           <div className="profile-section">
             <div className="profile-image">
-              <img src="/api/placeholder/200/200" alt="Profile" />
+              <img src="/documents/photo.png" alt="Profile" />
             </div>
             <div className="profile-info">
-              <h1>Your Name</h1>
-              <p className="role">ML/DL Engineer & Researcher</p>
+              <h1>Ayush Saun</h1>
+              <p className="role">AI/ML Enthusiast | Ex-Samsung SDE | M.Tech @ IIIT-Delhi | B.Tech @ DTU</p>
               <div className="social-links">
                 <a
                   href="https://www.linkedin.com/in/ayush-saun-381371180/"
@@ -125,11 +137,13 @@ const About = () => {
           </div>
           <div className="about-description">
             <p>
-              Passionate Machine Learning and Deep Learning engineer with expertise in computer vision, 
-              audio processing, and AI model development. Dedicated to creating innovative solutions that 
-              push the boundaries of artificial intelligence. With 2+ years of hands-on experience in 
-              developing production-ready ML models, I specialize in transforming complex data into 
-              actionable insights and scalable AI solutions.
+              An AI/ML engineer who turns complex models into real-world solutions. 
+              After two years at Samsung R&D and now pursuing an M.Tech at IIIT-Delhi, 
+              I’ve developed everything from real-time object-tracking pipelines to 
+              deepfake-resistant speaker-verification systems. My work spans computer 
+              vision, audio and security AI, and classification—always with an eye toward 
+              scalable, high-impact applications. Driven by curiosity and collaboration, I’m 
+              committed to advancing multi-modal intelligence across diverse domains.
             </p>
           </div>
         </div>
@@ -140,76 +154,95 @@ const About = () => {
         <div className="container">
           <h2 className="section-title">Resume</h2>
           <div className="resume-content">
-            
-            {/* Education Card */}
+
+            {/* EDUCATION */}
             <div className="resume-card" data-aos="fade-up">
               <div className="resume-header">
-                <h3>
-                  <i className="fas fa-graduation-cap"></i>
-                  Education
-                </h3>
+                <h3><i className="fas fa-graduation-cap"></i> Education</h3>
               </div>
               <div className="resume-item">
-                <h4>Master's in Computer Science</h4>
-                <p className="institution">University Name</p>
-                <p className="date">2022 - 2024</p>
-                <p className="description">
-                  Specialized in Machine Learning and Artificial Intelligence with focus on 
-                  deep learning architectures, computer vision, and audio processing systems.
-                </p>
+                <h4>M.Tech in Computer Science</h4>
+                <p className="institution">IIIT-Delhi, Delhi, India</p>
+                <p className="date">Aug 2024 – Present</p>
+              </div>
+              <div className="resume-item">
+                <h4>B.Tech in Electrical Engineering</h4>
+                <p className="institution">Delhi Technological University, Delhi, India</p>
+                <p className="date">Aug 2018 – Jun 2022</p>
+              </div>
+              <div className="resume-item">
+                <h4>Class XII, CBSE</h4>
+                <p className="institution">Kendriya Vidyalaya Vigyan Vihar, Delhi, India</p>
+                <p className="date">Apr 2017 – Mar 2018</p>
+              </div>
+              <div className="resume-item">
+                <h4>Class X, CBSE</h4>
+                <p className="institution">Kendriya Vidyalaya Vigyan Vihar, Delhi, India</p>
+                <p className="date">Apr 2015 – Mar 2016</p>
               </div>
             </div>
 
-            {/* Experience Card */}
+            {/* EXPERIENCE */}
             <div className="resume-card" data-aos="fade-up" data-aos-delay="100">
               <div className="resume-header">
-                <h3>
-                  <i className="fas fa-briefcase"></i>
-                  Experience
-                </h3>
+                <h3><i className="fas fa-briefcase"></i> Experience</h3>
               </div>
               <div className="resume-item">
-                <h4>Senior ML Engineer</h4>
-                <p className="institution">Tech Company</p>
-                <p className="date">2024 - Present</p>
-                <p className="description">
-                  Leading development of audio processing models and spoof detection systems 
-                  with 95%+ accuracy rates.
-                </p>
-              </div>
-              <div className="resume-item">
-                <h4>ML Research Intern</h4>
-                <p className="institution">Research Lab</p>
-                <p className="date">2023</p>
-                <p className="description">
-                  Worked on object tracking algorithms and computer vision projects, 
-                  contributing to 3 published research papers.
-                </p>
+                <h4>Software Engineer</h4>
+                <p className="institution">Samsung R&D, Delhi, India</p>
+                <p className="date">Jun 2022 – Jul 2024</p>
+                <ul className="experience-list">
+                  <li>Maintained an internal corporate portal as a full-stack developer—delivering 5+ monthly releases and achieving 99.8% uptime.</li>
+                  <li>Led front-end UI enhancements and back-end integrations for critical content updates.</li>
+                  <li>Developed a new portal from scratch, collaborating across teams to ensure seamless functionality.</li>
+                  <li>Optimized backend performance, reducing response times through efficient database and API solutions.</li>
+                  <li>Showcased end-to-end development skills by prototyping a hackathon project with complete front- and back-end implementation.</li>
+                </ul>
               </div>
             </div>
 
-            {/* Skills Card */}
+            {/* SKILLS */}
             <div className="resume-card" data-aos="fade-up" data-aos-delay="200">
               <div className="resume-header">
-                <h3>
-                  <i className="fas fa-tools"></i>
-                  Skills
-                </h3>
+                <h3><i className="fas fa-tools"></i> Skills</h3>
               </div>
-              <div className="skills-grid">
-                {skills.map((skill, index) => (
-                  <span key={index} className="skill-tag">{skill}</span>
+              <div className="skills-partition">
+                {Object.entries(skillsCategories).map(([category, items], idx) => (
+                  <div key={idx} className="skill-category">
+                    <h4 className="category-title">{category}</h4>
+                    <div className="skills-grid">
+                      {items.map((skill, i) => (
+                        <span key={i} className="skill-tag">{skill}</span>
+                      ))}
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
 
-            {/* Download CV */}
-            <div className="download-cv">
-              <a href="/path-to-your-cv.pdf" className="download-btn" download>
-                <i className="fas fa-download"></i>
-                Download CV
+            {/* Download Section */}
+            <div className="download-section">
+              <a
+                href="/documents/Resume.pdf"
+                className="download-btn resume"
+                download="AyushSaun_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i className="fas fa-file-alt"></i> Get My Resume
+              </a>
+              <a
+                href="/documents/LOR.pdf"
+                className="download-btn lor"
+                download="AyushSaun_LOR.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i className="fas fa-file-signature"></i>
+                Recommendation Letter
               </a>
             </div>
+
           </div>
         </div>
       </section>

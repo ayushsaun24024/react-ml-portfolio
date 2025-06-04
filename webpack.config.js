@@ -1,5 +1,6 @@
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin   = require('copy-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
 module.exports = (env = {}) => {
@@ -14,19 +15,16 @@ module.exports = (env = {}) => {
       publicPath: publicPath,
     },
     target: 'web',
-    devServer: {
-      historyApiFallback: true,
-      port: '5000',
-      static: {
-        directory: path.join(__dirname, 'public')
-      },
-      open: true,
-      hot: true,
-      liveReload: true,
-    },
+    
+    // Add fallbacks for Node.js modules
     resolve: {
-      extensions: ['.js', '.jsx', '.ts', '.tsx']
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      fallback: {
+        "process": require.resolve("process/browser"),
+        "buffer": require.resolve("buffer"),
+      }
     },
+
     module: {
       rules: [
         {
@@ -40,13 +38,21 @@ module.exports = (env = {}) => {
           test: /\.css$/i,
           use: ["style-loader", "css-loader"],
         },
+        // Fix for fully specified modules
+        {
+          test: /\.m?js$/,
+          resolve: {
+            fullySpecified: false,
+          },
+        },
       ],
     },
+
     plugins: [
       new HtmlWebpackPlugin({
-        template: path.join(__dirname, 'public', 'index.html'),
+        template: path.join(__dirname, 'public', 'index.html')
       }),
-
+      
       new CopyWebpackPlugin({
         patterns: [
           {
@@ -58,6 +64,23 @@ module.exports = (env = {}) => {
           },
         ],
       }),
+
+      // Provide process and Buffer globally
+      new webpack.ProvidePlugin({
+        process: 'process/browser',
+        Buffer: ['buffer', 'Buffer'],
+      }),
     ],
+
+    devServer: {
+      historyApiFallback: true,
+      port: '5000',
+      static: {
+        directory: path.join(__dirname, 'public')
+      },
+      open: true,
+      hot: true,
+      liveReload: true,
+    },
   };
 };

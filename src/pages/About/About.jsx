@@ -89,7 +89,7 @@ const About = () => {
         <div className="container">
           <div className="profile-section">
             <div className="profile-image">
-              <img src="/documents/photo.png" alt="Profile" />
+              <img src="documents/photo.png" alt="Profile" />
             </div>
             <div className="profile-info">
               <h1>Ayush Saun</h1>
@@ -223,7 +223,7 @@ const About = () => {
             {/* Download Section */}
             <div className="download-section">
               <a
-                href="/documents/Resume.pdf"
+                href="documents/Resume.pdf"
                 className="download-btn resume"
                 download="AyushSaun_Resume.pdf"
                 target="_blank"
@@ -232,7 +232,7 @@ const About = () => {
                 <i className="fas fa-file-alt"></i> Get My Resume
               </a>
               <a
-                href="/documents/LOR.pdf"
+                href="documents/LOR.pdf"
                 className="download-btn lor"
                 download="AyushSaun_LOR.pdf"
                 target="_blank"

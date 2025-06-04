@@ -1,10 +1,11 @@
 {
-  "name": "ux",
+  "name": "react-ml-portfolio",
   "version": "1.0.0",
-  "main": "index.js",
+  "private": true,
+  "homepage": "https://ayushsaun24024.github.io/react-ml-portfolio",
   "scripts": {
-    "start": "webpack-dev-server --env publicPath=/",
-    "build": "webpack --env publicPath=/react-ml-portfolio/",
+    "start": "webpack-dev-server --mode development --env publicPath=/ --open",
+    "build": "webpack --mode production --env publicPath=/react-ml-portfolio/",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
@@ -12,20 +13,17 @@
     "type": "git",
     "url": "git+https://github.com/ayushsaun24024/react-ml-portfolio.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/ayushsaun24024/react-ml-portfolio/issues"
   },
-  "homepage": "https://ayushsaun24024.github.io/react-ml-portfolio",
-  "description": "",
+  "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.27.2",
     "@babel/core": "^7.27.4",
     "@babel/preset-env": "^7.27.2",
     "@babel/preset-react": "^7.27.1",
     "babel-loader": "^10.0.0",
+    "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^7.1.2",
     "html-webpack-plugin": "^5.6.3",
     "style-loader": "^4.0.0",

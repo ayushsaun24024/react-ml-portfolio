@@ -25,16 +25,26 @@ const Models = () => {
       title: "Object Tracking",
       type: "Computer Vision",
       icon: "fas fa-crosshairs",
-      description: "Advanced single object tracking system using machine learning algorithms. Implements real-time tracking with high accuracy and robust performance across various scenarios. The model combines deep learning features with traditional tracking methods to achieve superior performance in challenging conditions.",
+      description: "Advanced Single Object Tracking (SOT) system with camera motion compensation and adaptive multiscale tracking. Combines multiple feature extraction techniques with ML-based prediction for robust performance in dynamic environments including surveillance and autonomous systems.",
       features: [
-        "Real-time Performance",
-        "High Accuracy",
-        "Robust Tracking",
-        "Multi-scenario Support",
-        "Deep Learning Features"
+        "Camera Motion Compensation (ORB)",
+        "Multiscale Adaptive Tracking", 
+        "Hybrid Features (HOG, LBP, SIFT)",
+        "ML Prediction (Linear + Random Forest)",
+        "Real-time Visual Diagnostics",
+        "Comprehensive Metrics"
       ],
-      techStack: ["PyTorch", "OpenCV", "Python", "CUDA"],
-      accuracy: "95.2%",
+      techStack: [
+        "OpenCV",
+        "ORB", 
+        "SIFT",
+        "HOG",
+        "LBP",
+        "Linear Regression",
+        "Random Forest",
+        "Python"
+      ],
+      accuracy: "85% IoU",
       performance: "30+ FPS"
     },
     {
@@ -42,51 +52,71 @@ const Models = () => {
       title: "Vocoder",
       type: "Audio ML",
       icon: "fas fa-microphone",
-      description: "High-quality speech synthesis vocoder using advanced machine learning techniques. Produces natural-sounding speech with excellent audio quality and low latency. The system leverages neural networks to generate high-fidelity audio from mel-spectrograms with minimal artifacts.",
+      description: "ML-based vocoder using Griffin-Lim algorithm for audio reconstruction from Mel-spectrograms. Implements comprehensive processing pipeline with 500-bin Mel spectrograms and iterative phase estimation for high-quality audio synthesis with minimal artifacts.",
       features: [
-        "High-Quality Synthesis",
-        "Low Latency",
-        "Natural Sound",
-        "Neural Networks",
-        "Minimal Artifacts"
+        "Griffin-Lim Reconstruction",
+        "Iterative Phase Estimation",
+        "Comprehensive Evaluation Metrics",
+        "Automated Processing Pipeline"
       ],
-      techStack: ["TensorFlow", "Librosa", "Python", "NumPy"],
-      accuracy: "4.5/5 MOS",
+      techStack: [
+        "Librosa", 
+        "NumPy", 
+        "SciPy", 
+        "SoundFile", 
+        "Matplotlib", 
+        "Python"
+      ],
+      accuracy: "95% Fidelity",
       performance: "Real-time"
     },
     {
       id: 3,
       title: "Spoof Detection",
-      type: "Security AI",
+      type: "Security AI", 
       icon: "fas fa-shield-alt",
-      description: "State-of-the-art deep learning model for detecting spoofed audio content. Achieves high precision in distinguishing between authentic and synthetic audio samples. The model uses advanced feature extraction and classification techniques to identify various types of audio spoofing attacks.",
+      description: "Advanced audio deepfake detection system. Implements binary classification for spoof vs bonafide detection and source tracing for attack type identification. Uses state-of-the-art supervised models with comprehensive augmentation techniques to achieve robust performance against diverse spoofing attacks.",
       features: [
-        "High Precision",
-        "Multi-attack Detection",
-        "Feature Extraction",
-        "Real-time Analysis",
-        "Robust Classification"
+        "Binary Classification",
+        "Source Tracing",
+        "Multi-Augmentation techniques",
+        "Audio processing",
+        "Supervised Learning"
       ],
-      techStack: ["PyTorch", "Scikit-learn", "Librosa", "Python"],
-      accuracy: "97.8%",
-      performance: "< 100ms"
+      techStack: [
+        "Transformers",
+        "Hugging Face", 
+        "PyTorch",
+        "Librosa",
+        "Torchaudio pipelines",
+        "Python"
+      ],
+      accuracy: "6.3% EER",
+      performance: "Robust System"
     },
     {
       id: 4,
       title: "Target Classification",
       type: "Classification",
       icon: "fas fa-bullseye",
-      description: "Sophisticated classification system for target vs non-target audio identification. Handles complex scenarios including spoof and bonafide non-target classifications. The system employs ensemble methods and deep learning architectures for accurate audio classification.",
+      description: "Advanced speaker verification system for target vs non-target classification in audio authentication. Implements multi-class classification handling bonafide, spoof, and non-target scenarios. Uses supervised learning with ensemble methods for robust speaker identity verification in security-critical applications.",
       features: [
-        "Multi-class Classification",
+        "Speaker Verification",
+        "Multi-class Classification", 
+        "Bonafide vs Spoof vs Non-target",
+        "Supervised Learning",
         "Ensemble Methods",
-        "Complex Scenarios",
-        "Deep Learning",
-        "High Accuracy"
       ],
-      techStack: ["TensorFlow", "Keras", "Python", "Pandas"],
-      accuracy: "94.6%",
-      performance: "Batch Processing"
+      techStack: [
+        "Transformers",
+        "Hugging Face", 
+        "PyTorch",
+        "Librosa",
+        "Torchaudio pipelines",
+        "Python"
+      ],
+      accuracy: "30% EER",
+      performance: "Real-time"
     }
   ];
 
@@ -174,7 +204,7 @@ const Models = () => {
               </div>
 
               <div className="model-actions">
-                <a href="#" className="model-link primary">
+                {/* <a href="#" className="model-link primary">
                   <i className="fas fa-play"></i>
                   Live Demo
                 </a>
@@ -185,7 +215,7 @@ const Models = () => {
                 <a href="#" className="model-link tertiary">
                   <i className="fas fa-file-alt"></i>
                   Documentation
-                </a>
+                </a> */}
               </div>
             </div>
           ))}
@@ -201,29 +231,29 @@ const Models = () => {
               <div className="overview-icon">
                 <i className="fas fa-brain"></i>
               </div>
-              <h3>Deep Learning</h3>
-              <p>Advanced neural network architectures including CNNs, RNNs, and Transformers for complex pattern recognition and feature extraction.</p>
+              <h3>Machine Learning</h3>
+              <p>Advanced supervised learning with Transformers, ensemble methods, and feature extraction techniques for robust prediction and classification across diverse domains.</p>
             </div>
             <div className="overview-card">
               <div className="overview-icon">
                 <i className="fas fa-eye"></i>
               </div>
               <h3>Computer Vision</h3>
-              <p>Real-time object detection, tracking, and classification systems optimized for performance and accuracy in various scenarios.</p>
+              <p>Real-time object tracking systems with camera motion compensation, multiscale adaptive tracking, and hybrid feature extraction (ORB, SIFT, HOG, LBP) for surveillance applications.</p>
             </div>
             <div className="overview-card">
               <div className="overview-icon">
                 <i className="fas fa-volume-up"></i>
               </div>
               <h3>Audio Processing</h3>
-              <p>Sophisticated audio analysis, synthesis, and classification models for speech, music, and general audio content processing.</p>
+              <p>Griffin-Lim vocoder reconstruction, speaker verification systems, and comprehensive audio augmentation techniques for synthesis and authentication applications.</p>
             </div>
             <div className="overview-card">
               <div className="overview-icon">
                 <i className="fas fa-shield-alt"></i>
               </div>
               <h3>Security & Detection</h3>
-              <p>State-of-the-art anomaly detection and spoof identification systems for maintaining data integrity and security.</p>
+              <p>Advanced deepfake detection with binary classification, source tracing capabilities, and multi-augmentation techniques achieving robust EER performance for audio security.</p>
             </div>
           </div>
         </div>

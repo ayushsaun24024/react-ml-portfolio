@@ -41,28 +41,28 @@ const Home = () => {
     {
       id: 1,
       title: "Object Tracking",
-      description: "ML-based single object tracking model with real-time performance optimization",
+      description: "Advanced SOT system with camera motion compensation and adaptive multiscale tracking for surveillance applications",
       icon: "fas fa-crosshairs",
       techTag: "Computer Vision"
     },
     {
       id: 2,
       title: "Vocoder",
-      description: "Advanced ML-based vocoder for high-quality speech synthesis and audio generation",
+      description: "Griffin-Lim algorithm-based vocoder for high-fidelity audio reconstruction from Mel-spectrograms",
       icon: "fas fa-microphone",
       techTag: "Audio ML"
     },
     {
       id: 3,
       title: "Spoof Detection",
-      description: "Deep learning model to detect spoofed vs bonafide audio with high accuracy",
+      description: "ASVspoof challenge system with binary classification and source tracing for audio deepfake detection",
       icon: "fas fa-shield-alt",
       techTag: "Security AI"
     },
     {
       id: 4,
       title: "Target Classification",
-      description: "DL-based model for target vs non-target audio classification system",
+      description: "Speaker verification system for target vs non-target classification in audio authentication scenarios",
       icon: "fas fa-bullseye",
       techTag: "Classification"
     }
